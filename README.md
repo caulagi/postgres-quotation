@@ -10,5 +10,5 @@ You need **git lfs** for working with this repo.
 ## Example use
 
 ```shell
-$ docker run -e POSTGRES_PASSWORD=1234 -p 5432:5432 -v $(pwd)/data/data.sql:/docker-entrypoint-initdb.d/01-data.sql postgres:12
+$ docker run -d -e POSTGRES_PASSWORD=1234 -p 5432:5432 -v $(pwd)/data/data.sql:/docker-entrypoint-initdb.d/01-data.sql postgres:12
 ```

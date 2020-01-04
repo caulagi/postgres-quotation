@@ -13,8 +13,8 @@ print(
     """
 CREATE TABLE IF NOT EXISTS quotation(
     id SERIAL PRIMARY KEY,
-    context TEXT,
-    sha256 TEXT unique,
+    content TEXT,
+    md5 TEXT unique,
     author TEXT NULL,
     created TIMESTAMP DEFAULT now(),
     modified TIMESTAMP
@@ -30,7 +30,7 @@ $update_modified_column$ language 'plpgsql';
 CREATE TRIGGER update_modified_column BEFORE INSERT OR UPDATE ON quotation
     FOR EACH ROW EXECUTE PROCEDURE update_modified_column();
 
-INSERT INTO quotation(context, sha256, author) VALUES""")
+INSERT INTO quotation(content, md5, author) VALUES""")
 
 with open("quotes.json") as f:
     data = json.loads(f.read())
